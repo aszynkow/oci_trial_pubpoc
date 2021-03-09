@@ -96,7 +96,7 @@ data "oci_core_images" "Bgl_Oci_Shr_Syd_Vm1Images" {
     compartment_id           = var.tenancy_ocid
     operating_system         = var.Bgl_Oci_Shr_Syd_Vm1_os
     operating_system_version = var.Bgl_Oci_Shr_Syd_Vm1_os_version
-    shape                    = var.Bgl_Oci_Shr_Syd_Vm1_shape
+    shape                    = local.Bgl_Oci_Shr_Syd_Vm1_shape
 }
 # ------ Create Subnet
 # ---- Create Public Subnet
@@ -124,7 +124,7 @@ locals {
 resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
     # Required
     compartment_id      = local.current_compartment_id
-    shape               = var.Bgl_Oci_Shr_Syd_Vm1_shape
+    shape               = local.Bgl_Oci_Shr_Syd_Vm1_shape
     # Optional
     display_name        = var.Bgl_Oci_Shr_Syd_Vm1_display_name
     availability_domain = data.oci_identity_availability_domains.AvailabilityDomains.availability_domains[var.Bgl_Oci_Shr_Syd_Vm1_availability_domain - 1]["name"]
