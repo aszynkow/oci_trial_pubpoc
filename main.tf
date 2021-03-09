@@ -39,7 +39,7 @@ data "oci_core_vcns" "bgl_vcns" {
 }
 
 locals {
-Bgl_Oci_Cor_Shr_Syd_Vcns = [for x in data.oci_core_vcns.bgl_vcns.vcns: x if x.display_name == var.vcn_name]
+Bgl_Oci_Cor_Shr_Syd_Vcns = [for x in data.oci_core_vcns.bgl_vcns.virtual_networks: x if x.display_name == var.vcn_name]
 Bgl_Oci_Cor_Shr_Syd_Vcn_01_id = local.Bgl_Oci_Cor_Shr_Syd_Vcns.0.id
 }
 
