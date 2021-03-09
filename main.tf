@@ -46,6 +46,7 @@ data "oci_core_vcns" "bgl_vcns" {
 locals {
 Bgl_Oci_Cor_Shr_Syd_Vcns = [for x in data.oci_core_vcns.bgl_vcns.virtual_networks: x if x.display_name == var.vcn_name]
 Bgl_Oci_Cor_Shr_Syd_Vcn_01_id = local.Bgl_Oci_Cor_Shr_Syd_Vcns.0.id
+Bgl_Oci_Cor_Shr_Syd_Vcn_01 = local.Bgl_Oci_Cor_Shr_Syd_Vcns.0
 }
 
 data "oci_core_route_tables" "bgl_route_tables" {
@@ -136,17 +137,24 @@ locals {
 }
 
 # ------ Create Route Table
-resource "oci_core_route_table" "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01" {
+resource "oci_core_default_route_table" "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01" {
+    manage_default_resource_id = Bgl_Oci_Cor_Shr_Syd_Vcn_01.default_route_table_id
     # Required
-    compartment_id = local.Networking_Compartment_Id_id
-    vcn_id         = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_id
+    #compartment_id = local.Networking_Compartment_Id_id
+    #vcn_id         = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_id
     # Optional
-    display_name   = var.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_display_name
+    #display_name   = var.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_display_name
     freeform_tags  = var.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_freeform_tags
 
      route_rules {
         network_entity_id = local.Bgl_Oci_Cor_Shr_Syd_Igw_01_id
         destination       = "0.0.0.0/0"
+        destination_type  = "CIDR_BLOCK"
+    }
+
+     route_rules {
+        network_entity_id = local.Bgl_Oci_Cor_Shr_Syd_Drg_01_id
+        destination       = local.On_prem_cidr_block
         destination_type  = "CIDR_BLOCK"
     }
 }
