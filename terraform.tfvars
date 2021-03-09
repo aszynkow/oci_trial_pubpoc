@@ -23,3 +23,6 @@ vcn_name = "BGL-OCI-COR-SHR-SYD-VCN-01"
 route_table_display_name = "BGL-OCI-COR-SHR-SYD-RT-01"
 security_list_display_name = "BGL-OCI-COR-SHR-SYD-SL-01"
 dhcp_options_display_name = "BGL-OCI-COR-SHR-SYD-DHC-01"
+Bgl_Oci_Cor_Shr_Syd_Igw_01_display_name = "BGL-OCI-COR-SHR-SYD-IGW-01"
+Bgl_Oci_Cor_Shr_Syd_Igw_01_enabled = "true"
+Bgl_Oci_Cor_Shr_Syd_Igw_01_freeform_tags = {"Environment": "OCI_TRIAL"}

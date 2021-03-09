@@ -54,3 +54,7 @@ type = string
 description = "Flex OCPUS"
 default = "1"
 }
+
+variable "Bgl_Oci_Cor_Shr_Syd_Igw_01_display_name" {}
+variable "Bgl_Oci_Cor_Shr_Syd_Igw_01_enabled" {}
+variable "Bgl_Oci_Cor_Shr_Syd_Igw_01_freeform_tags" {}

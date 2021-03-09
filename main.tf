@@ -120,6 +120,21 @@ locals {
     Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_domain_name     = oci_core_subnet.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc.subnet_domain_name
 }
 
+# ------ Create Internet Gateway
+resource "oci_core_internet_gateway" "Bgl_Oci_Cor_Shr_Syd_Igw_01" {
+    # Required
+    compartment_id = local.Networking_Compartment_Id_id
+    vcn_id         = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_id
+    # Optional
+    enabled        = var.Bgl_Oci_Cor_Shr_Syd_Igw_01_enabled
+    display_name   = var.Bgl_Oci_Cor_Shr_Syd_Igw_01_display_name
+    freeform_tags  = var.Bgl_Oci_Cor_Shr_Syd_Igw_01_freeform_tags
+}
+
+locals {
+    Bgl_Oci_Cor_Shr_Syd_Igw_01_id = oci_core_internet_gateway.Bgl_Oci_Cor_Shr_Syd_Igw_01.id
+}
+
 # ------ Create Instance
 resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
     # Required
