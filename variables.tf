@@ -61,3 +61,4 @@ variable "Bgl_Oci_Cor_Shr_Syd_Igw_01_freeform_tags" {}
 variable "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_display_name" {}
 variable "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_freeform_tags" {}
 variable "on_prem_cidr_block" {}
+variable "Bgl_Oci_Cor_Shr_Syd_Drg_01_display_name" {}

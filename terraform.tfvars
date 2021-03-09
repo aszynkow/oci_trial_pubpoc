@@ -29,3 +29,4 @@ Bgl_Oci_Cor_Shr_Syd_Igw_01_freeform_tags = {"Environment": "OCI_TRIAL"}
 Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_display_name = "BGL-OCI-COR-SHR-SYD-RTN-IGW-01"
 Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_freeform_tags = {"Environment": "OCI_TRIAL"}
 on_prem_cidr_block = "172.31.0.0/16"
+Bgl_Oci_Cor_Shr_Syd_Drg_01_display_name = "BGL-OCI-COR-SHR-SYD-DRG-01"
