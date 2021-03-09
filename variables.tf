@@ -42,3 +42,15 @@ variable "network_compartment_name" {
 variable "route_table_display_name" {}
 variable "security_list_display_name" {}
 variable "dhcp_options_display_name" {}
+
+variable "memory" {
+type = string
+description = "Flex RAM"
+default = "15"
+}
+
+variable "ocpus" {
+type = string
+description = "Flex OCPUS"
+default = "1"
+}

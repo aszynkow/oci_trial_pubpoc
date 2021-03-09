@@ -156,6 +156,12 @@ resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
         boot_volume_size_in_gbs = var.Bgl_Oci_Shr_Syd_Vm1_boot_volume_size_in_gbs
 #        kms_key_id              = 
     }
+
+     shape_config {
+      memory_in_gbs = var.memory
+      ocpus = var.ocpus
+  }
+  
     preserve_boot_volume = var.Bgl_Oci_Shr_Syd_Vm1_preserve_boot_volume
     freeform_tags              = var.Bgl_Oci_Shr_Syd_Vm1_freeform_tags
 }
