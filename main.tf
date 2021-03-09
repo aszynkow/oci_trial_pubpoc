@@ -111,7 +111,7 @@ resource "oci_core_subnet" "Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc" {
     dhcp_options_id            = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_dhcp_options_id
     prohibit_public_ip_on_vnic = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_prohibit_public_ip_on_vnic
     freeform_tags              = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_freeform_tags
-    security_list_ids          = local.Bgl_Oci_Cor_Shr_Syd_Sl_01_id
+    security_list_ids          = [local.Bgl_Oci_Cor_Shr_Syd_Sl_01_id]
 }
 
 locals {
