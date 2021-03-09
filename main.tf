@@ -17,7 +17,7 @@
 locals {
     #Networking_Compartment_Id_id   = var.compartment_ocid
     ssh_pub_key = var.ssh_public_key
-    Bgl_Oci_Shr_Syd_Vm1_shape = var.Bgl_Oci_Shr_Syd_Vm1_shape[0]
+    Bgl_Oci_Shr_Syd_Vm1_shape = var.Bgl_Oci_Shr_Syd_Vm1_shape[1]
     On_prem_cidr_block = var.on_prem_cidr_block
 }
 
