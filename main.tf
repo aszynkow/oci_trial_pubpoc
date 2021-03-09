@@ -54,7 +54,7 @@ data "oci_core_route_tables" "bgl_route_tables" {
 }
 
 locals {
-    Bgl_Oci_Cor_Shr_Syd_Rt_01_id = oci_core_route_tables.bgl_route_tables.route_tables.0.id
+    Bgl_Oci_Cor_Shr_Syd_Rt_01_id = data.oci_core_route_tables.bgl_route_tables.route_tables.0.id
 }
 
 
@@ -69,7 +69,7 @@ data "oci_core_security_lists" "bgl_security_lists" {
 }
 
 locals {
-   Bgl_Oci_Cor_Shr_Syd_Sl_01_id = oci_core_route_tables.bgl_security_lists.security_lists.0.id
+   Bgl_Oci_Cor_Shr_Syd_Sl_01_id = data.oci_core_route_tables.bgl_security_lists.security_lists.0.id
 }
 
 data "oci_core_dhcp_options" "bgl_dhcp_options" {
@@ -83,7 +83,7 @@ data "oci_core_dhcp_options" "bgl_dhcp_options" {
 }
 
 locals {
-   Bgl_Oci_Cor_Shr_Syd_Vcn_01_dhcp_options_id = oci_core_dhcp_options.bgl_dhcp_options.options.0.id
+   Bgl_Oci_Cor_Shr_Syd_Vcn_01_dhcp_options_id = data.oci_core_dhcp_options.bgl_dhcp_options.options.0.id
 }
 
 # ------ Get List OL7 Images
