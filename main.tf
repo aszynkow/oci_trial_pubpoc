@@ -19,6 +19,10 @@ locals {
     ssh_pub_key = var.ssh_public_key
 }
 
+data "oci_identity_availability_domains" "AvailabilityDomains" {
+    compartment_id = var.tenancy_ocid
+}
+
 data "oci_identity_compartments" "bgl_compartments" {
     #Required
     compartment_id = var.tenancy_ocid
