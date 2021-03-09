@@ -17,6 +17,7 @@
 locals {
     #Networking_Compartment_Id_id   = var.compartment_ocid
     ssh_pub_key = var.ssh_public_key
+    Bgl_Oci_Shr_Syd_Vm1_shape = var.Bgl_Oci_Shr_Syd_Vm1_shape[0]
 }
 
 data "oci_identity_availability_domains" "AvailabilityDomains" {
@@ -161,7 +162,7 @@ resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
       memory_in_gbs = var.memory
       ocpus = var.ocpus
   }
-  
+
     preserve_boot_volume = var.Bgl_Oci_Shr_Syd_Vm1_preserve_boot_volume
     freeform_tags              = var.Bgl_Oci_Shr_Syd_Vm1_freeform_tags
 }
