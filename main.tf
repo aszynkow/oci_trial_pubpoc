@@ -156,7 +156,7 @@ locals {
 }
 
 # ------ Create Instance
-/*resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
+resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
     # Required
     compartment_id      = local.current_compartment_id
     shape               = local.Bgl_Oci_Shr_Syd_Vm1_shape
@@ -207,4 +207,4 @@ locals {
     Bgl_Oci_Shr_Syd_Vm1_public_ip     = oci_core_instance.Bgl_Oci_Shr_Syd_Vm1.public_ip
     Bgl_Oci_Shr_Syd_Vm1_private_ip    = oci_core_instance.Bgl_Oci_Shr_Syd_Vm1.private_ip
 }
-*/
+
