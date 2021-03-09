@@ -108,11 +108,11 @@ resource "oci_core_subnet" "Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc" {
     # Optional
     display_name               = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_display_name
     dns_label                  = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_dns_label
-    route_table_id             = local.Bgl_Oci_Cor_Shr_Syd_Rt_01_id
-    dhcp_options_id            = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_dhcp_options_id
+    #route_table_id             = local.Bgl_Oci_Cor_Shr_Syd_Rt_01_id
+    #dhcp_options_id            = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_dhcp_options_id
     prohibit_public_ip_on_vnic = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_prohibit_public_ip_on_vnic
     freeform_tags              = var.Bgl_Oci_Cor_Shr_Syd_Sub_Publicpoc_freeform_tags
-    security_list_ids          = [local.Bgl_Oci_Cor_Shr_Syd_Sl_01_id]
+    #security_list_ids          = [local.Bgl_Oci_Cor_Shr_Syd_Sl_01_id]
 }
 
 locals {
@@ -135,8 +135,28 @@ locals {
     Bgl_Oci_Cor_Shr_Syd_Igw_01_id = oci_core_internet_gateway.Bgl_Oci_Cor_Shr_Syd_Igw_01.id
 }
 
+# ------ Create Route Table
+resource "oci_core_route_table" "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01" {
+    # Required
+    compartment_id = local.Networking_Compartment_Id_id
+    vcn_id         = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_id
+    # Optional
+    display_name   = var.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_display_name
+    freeform_tags  = var.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_freeform_tags
+
+     route_rules {
+        network_entity_id = local.Bgl_Oci_Cor_Shr_Syd_Igw_01_id
+        destination       = "0.0.0.0/0"
+        destination_type  = "CIDR_BLOCK"
+    }
+}
+
+locals {
+    Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_id = oci_core_route_table.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01.id
+}
+
 # ------ Create Instance
-resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
+/*resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
     # Required
     compartment_id      = local.current_compartment_id
     shape               = local.Bgl_Oci_Shr_Syd_Vm1_shape
@@ -187,4 +207,4 @@ locals {
     Bgl_Oci_Shr_Syd_Vm1_public_ip     = oci_core_instance.Bgl_Oci_Shr_Syd_Vm1.public_ip
     Bgl_Oci_Shr_Syd_Vm1_private_ip    = oci_core_instance.Bgl_Oci_Shr_Syd_Vm1.private_ip
 }
-
+*/
