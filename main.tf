@@ -43,10 +43,17 @@ data "oci_core_vcns" "bgl_vcns" {
     compartment_id      = local.Networking_Compartment_Id_id
 }
 
+data "oci_core_vcns" "bgl_vcns_def" {
+    #Required
+    compartment_id      = local.Networking_Compartment_Id_id
+    display_name = var.vcn_name
+}
+
+
 locals {
 Bgl_Oci_Cor_Shr_Syd_Vcns = [for x in data.oci_core_vcns.bgl_vcns.virtual_networks: x if x.display_name == var.vcn_name]
 Bgl_Oci_Cor_Shr_Syd_Vcn_01_id = local.Bgl_Oci_Cor_Shr_Syd_Vcns.0.id
-Bgl_Oci_Cor_Shr_Syd_Vcn_01 = local.Bgl_Oci_Cor_Shr_Syd_Vcns.0
+Bgl_Oci_Cor_Shr_Syd_Vcn_01_def_rt_id = data.oci_core_vcns.bgl_vcns_def.virtual_networks.0.default_route_table_id
 }
 
 data "oci_core_route_tables" "bgl_route_tables" {
@@ -138,7 +145,7 @@ locals {
 
 # ------ Create Route Table
 resource "oci_core_default_route_table" "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01" {
-    manage_default_resource_id = Bgl_Oci_Cor_Shr_Syd_Vcn_01.default_route_table_id
+    manage_default_resource_id = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_def_rt_id
     # Required
     #compartment_id = local.Networking_Compartment_Id_id
     #vcn_id         = local.Bgl_Oci_Cor_Shr_Syd_Vcn_01_id
@@ -159,9 +166,9 @@ resource "oci_core_default_route_table" "Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01" {
     }
 }
 
-locals {
+/*locals {
     Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01_id = oci_core_route_table.Bgl_Oci_Cor_Shr_Syd_Rtn_Igw_01.id
-}
+}*/
 
 # ------ Create Instance
 resource "oci_core_instance" "Bgl_Oci_Shr_Syd_Vm1" {
