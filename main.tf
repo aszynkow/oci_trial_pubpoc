@@ -69,7 +69,7 @@ data "oci_core_security_lists" "bgl_security_lists" {
 }
 
 locals {
-   Bgl_Oci_Cor_Shr_Syd_Sl_01_id = data.oci_core_route_tables.bgl_security_lists.security_lists.0.id
+   Bgl_Oci_Cor_Shr_Syd_Sl_01_id = data.oci_core_security_lists.bgl_security_lists.security_lists.0.id
 }
 
 data "oci_core_dhcp_options" "bgl_dhcp_options" {
