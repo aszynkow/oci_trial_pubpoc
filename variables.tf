@@ -17,8 +17,8 @@ variable "Bgl_Oci_Shr_Syd_Vm1_display_name_vnic" {}
 variable "Bgl_Oci_Shr_Syd_Vm1_hostname_label" {}
 variable "Bgl_Oci_Shr_Syd_Vm1_assign_public_ip" {}
 variable "Bgl_Oci_Shr_Syd_Vm1_skip_source_dest_check" {}
-variable "Bgl_Oci_Shr_Syd_Vm1_authorized_keys" {}
-variable "Bgl_Oci_Shr_Syd_Vm1_user_data" {}
+#variable "Bgl_Oci_Shr_Syd_Vm1_authorized_keys" {}
+#variable "Bgl_Oci_Shr_Syd_Vm1_user_data" {}
 variable "Bgl_Oci_Shr_Syd_Vm1_preserve_boot_volume" {}
 variable "Bgl_Oci_Shr_Syd_Vm1_freeform_tags" {}
 variable "vcn_name" {
